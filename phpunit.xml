@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.2/phpunit.xsd"
+         bootstrap="src/bootstrap.php"
+         backupGlobals="false"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         colors="true"
+         verbose="true">
+
+    <testsuite name="calculator">
+        <directory suffix="Test.php">tests</directory>
+    </testsuite>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+            <exclude>
+                <file>src/bootstrap.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log
+                type="coverage-html"
+                target="./coverage/"
+                lowUpperBound="60"
+                highLowerBound="90"
+        />
+        <log
+                type="coverage-clover"
+                target="./coverage/clover.xml"
+        />
+    </logging>
+</phpunit>
