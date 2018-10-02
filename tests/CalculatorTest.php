@@ -1,26 +1,29 @@
 <?php
 
-namespace CalculatorViaClosure;
-
 use PHPUnit\Framework\TestCase;
+use function CalculatorViaClosure\CalculatorGenerator;
+use CalculatorViaClosure\ClosureException;
 
 class CalculatorTest extends TestCase
 {
-    public function foo()
+    public function testWrongGeneratorArgumentType()
     {
-        return true;
+        $this->expectException(\TypeError::class);
+        CalculatorGenerator('Closure');
     }
 
-    public function testWrongClosureParameterException()
+    public function testWrongGeneratorClosureRefletionCheck()
     {
-        $this->expectException('\TypeError');
-        CalculatorGenerator($this->foo());
+        $this->expectException(ClosureException::class);
+        CalculatorGenerator(function ($x) { return $x; });
     }
 
     public function testWrongClosureReflectionCheckException()
     {
-        $this->expectException('\Exception');
-        CalculatorGenerator(function ($x) { return $x; });
+        require __DIR__ . '/../src/CalculatorOperators.php';
+        $calculate = CalculatorGenerator($addition);
+        $this->expectException('\ArgumentCountError');
+        $calculate(2, 2, 2);
     }
 
     public function testWrongFirstNumericParameterTypeException()
