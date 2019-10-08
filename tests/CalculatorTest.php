@@ -1,100 +1,84 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use function CalculatorViaClosure\CalculatorGenerator;
-use CalculatorViaClosure\ClosureException;
+use function CalculatorViaClosure\Calculator;
 
 class CalculatorTest extends TestCase
 {
-    public function testWrongGeneratorArgumentType()
+    public function testCalculatorFunctionThrowExceptionWhenClosureWithEmptyArguments()
     {
-        $this->expectException(\TypeError::class);
-        CalculatorGenerator('Closure');
+        $this->expectException(\InvalidArgumentException::class);
+
+        Calculator(function () {
+        });
     }
 
-    public function testWrongGeneratorClosureRefletionCheck()
+    public function testCalculatorFunctionThrowExceptionWhenClosureWithWrongArguments()
     {
-        $this->expectException(ClosureException::class);
-        CalculatorGenerator(function ($x) { return $x; });
-    }
+        require __DIR__ . '/../src/Operations/Addition.php';
 
-    public function testWrongClosureReflectionCheckException()
-    {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($addition);
-        $this->expectException('\ArgumentCountError');
-        $calculate(2, 2, 2);
-    }
+        $calculate = Calculator($addition);
+        $this->expectException(\InvalidArgumentException::class);
 
-    public function testWrongFirstNumericParameterTypeException()
-    {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($addition);
-        $this->expectException('\TypeError');
         $calculate('x', 2);
     }
 
-    public function testWrongSecondNumericParameterTypeException()
+    public function testAdditionClosureReturnExpected()
     {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($addition);
-        $this->expectException('\TypeError');
-        $calculate(2, 'y');
-    }
+        require __DIR__ . '/../src/Operations/Addition.php';
 
-    public function testCalculateAddition()
-    {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($addition);
+        $calculate = Calculator($addition);
+
+        $this->assertEquals(1, $calculate(1));
         $this->assertEquals(4, $calculate(2, 2));
         $this->assertEquals(7, $calculate(5, 2));
+        $this->assertEquals(-3, $calculate(-5, 2));
     }
 
-    public function testCalculateSubstraction()
+    public function testSubstractionClosureReturnExpected()
     {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($substraction);
+        require __DIR__ . '/../src/Operations/Subtraction.php';
+
+        $calculate = Calculator($substraction);
+
+        $this->assertEquals(1, $calculate(1));
         $this->assertEquals(0, $calculate(2, 2));
         $this->assertEquals(3, $calculate(5, 2));
+        $this->assertEquals(-3, $calculate(2, 5));
     }
 
-    public function testCalculateMultiplication()
+    public function testMultiplicationClosureReturnExpected()
     {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($multiplication);
+        require __DIR__ . '/../src/Operations/Multiplication.php';
+
+        $calculate = Calculator($multiplication);
+
+        $this->assertEquals(0, $calculate(0));
+        $this->assertEquals(1, $calculate(1));
         $this->assertEquals(4, $calculate(2, 2));
         $this->assertEquals(10, $calculate(5, 2));
+        $this->assertEquals(-6, $calculate(-3, 2));
     }
 
-    public function testCalculateDivision()
+    public function testDivisionClosureZeroException()
     {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($division);
+        require __DIR__ . '/../src/Operations/Division.php';
+
+        $calculate = Calculator($division);
+
+        $this->expectException('\DivisionByZeroError');
+        $calculate(2, 0);
+    }
+
+    public function testDivisionClosureReturnExpected()
+    {
+        require __DIR__ . '/../src/Operations/Division.php';
+
+        $calculate = Calculator($division);
+
+        $this->assertEquals(1, $calculate(1));
         $this->assertEquals(1, $calculate(2, 2));
         $this->assertEquals(2.5, $calculate(5, 2));
-    }
-
-    public function testCalculateDivisionZeroException()
-    {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($division);
-        $this->expectException('\DivisionByZeroError');
-        $calculate(2, 0);
-    }
-
-    public function testCalculateModulus()
-    {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($modulus);
-        $this->assertEquals(0, $calculate(2, 2));
-        $this->assertEquals(1, $calculate(5, 2));
-    }
-
-    public function testCalculateModulusZeroException()
-    {
-        require __DIR__ . '/../src/CalculatorOperators.php';
-        $calculate = CalculatorGenerator($modulus);
-        $this->expectException('\DivisionByZeroError');
-        $calculate(2, 0);
+        $this->assertEquals(-3, $calculate(-6, 2));
     }
 }

@@ -4,24 +4,27 @@ namespace CalculatorViaClosure;
 
 function Calculator(\Closure $operation)
 {
-    $argumentsNumber = 2;
-
     $reflection = new \ReflectionFunction($operation);
-    if ($reflection->getNumberOfRequiredParameters() !== $argumentsNumber) {
-        throw new ClosureException('You must pass only Closure with ' . $argumentsNumber . ' arguments.');
+
+    if ($reflection->getNumberOfParameters() < 1) {
+        throw new \InvalidArgumentException('Arguments cannot be empty.');
     }
 
-    // this function will store passed Closure function in $operator variable and
-    // use it as math operator any time it will be called as a function variable
-    return function ($a, $b) use ($operation, $argumentsNumber) {
-        if (count(func_get_args()) !== $argumentsNumber) {
-            throw new \ArgumentCountError('You must pass only ' . $argumentsNumber . ' arguments.');
+    /*
+     * This function will store passed Closure function with mathematical operations
+     * in $operation variable and will use it any time the Closure is invoked
+     */
+    return function (...$args) use ($operation) {
+        if (empty($args)) {
+            throw new \InvalidArgumentException('Arguments cannot be empty.');
         }
 
-        if (!is_numeric($a) || !is_numeric($b)) {
-            throw new \TypeError('Operand must be numeric.');
+        foreach ($args as $arg) {
+            if (!is_int($arg) && !is_float($arg)) {
+                throw new \InvalidArgumentException('Arguments must be numeric.');
+            }
         }
 
-        return $operation($a, $b);
+        return $operation(...$args);
     };
-};
+}
