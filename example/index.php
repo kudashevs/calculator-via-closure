@@ -1,26 +1,19 @@
 <?php
-use function CalculatorViaClosure\CalculatorGenerator;
-use CalculatorViaClosure\ClosureException;
 
-require_once 'src/bootstrap.php';
+namespace CalculatorViaClosure;
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 try {
-    $calculate = CalculatorGenerator($addition);
+    $calculate = Calculator($addition);
     echo $calculate(1, 2) . PHP_EOL; // 3
-} catch (ClosureException $e) {
+} catch (\Exception $e) {
     error_log('PHP Exception: ' . $e->getMessage() . ' in file ' . $e->getFile() . ' on line ' . $e->getLine(). '', 0);
-    echo 'Wrong Closure type passed to function!' . PHP_EOL;
-} catch (\ArgumentCountError $e) {
-    error_log('PHP Exception: ' . $e->getMessage() . ' in file ' . $e->getFile() . ' on line ' . $e->getLine() . '', 0);
-    echo 'Wrong arguments count passed to Closure!' . PHP_EOL;
-} catch (\TypeError $e) {
-    error_log('PHP Exception: ' . $e->getMessage() . ' in file ' . $e->getFile() . ' on line ' . $e->getLine() . '', 0);
-    echo 'Wrong arguments type passed to Closure!' . PHP_EOL;
+    echo $e->getMessage() . PHP_EOL;
 }
 
-
 try {
-    $calculate = CalculatorGenerator($division);
+    $calculate = Calculator($division);
     echo $calculate(1, 2) . PHP_EOL; // 0.5
 } catch (\DivisionByZeroError $e) {
     error_log('PHP Exception: ' . $e->getMessage() . ' in file ' . $e->getFile() . ' on line ' . $e->getLine(). '', 0);

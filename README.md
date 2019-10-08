@@ -1,11 +1,11 @@
-## Calculator Via Interface
+## Calculator Via Closures
 
-A simple calculator app written in PHP with PHPUnit tests which implements mathematics operators through closures.
+A simple calculator app is written in PHP and implements mathematical operations through the Closures functions.
 
-Basic idea is to use CalculatorGenerator function which receive closure implementation of some math operator as an argument
-and store it inside the return closure function. When we can calculate result through this stored Closure referring it like
-"variable function" with arguments. The example of CalculatorGenerator usage you can find in index.php file in the root directory.
+The main idea is that we use Calculator function which receives closure implementation of some mathematical operation as
+an argument and store it inside. When we can calculate the result through this stored Closure referring it like
+"variable function" with arguments or invoking it another way.
 
 
-This is not ideal solution and only a case study on how to implement some functionality through Closures.  
-Any ideas, suggestions, issues, code reviews and comments are highly welcome :)
+This isn't a production solution, but only a training exercise which helps better understand how Closures work.  
+Any ideas, suggestions, and reviews will be much appreciated :)
