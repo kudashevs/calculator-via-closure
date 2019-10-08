@@ -1,18 +1,19 @@
 <?php
+
 namespace CalculatorViaClosure;
 
-function CalculatorGenerator(\Closure $operator)
+function Calculator(\Closure $operation)
 {
     $argumentsNumber = 2;
 
-    $reflection = new \ReflectionFunction($operator);
+    $reflection = new \ReflectionFunction($operation);
     if ($reflection->getNumberOfRequiredParameters() !== $argumentsNumber) {
         throw new ClosureException('You must pass only Closure with ' . $argumentsNumber . ' arguments.');
     }
 
     // this function will store passed Closure function in $operator variable and
     // use it as math operator any time it will be called as a function variable
-    return function ($a, $b) use ($operator, $argumentsNumber) {
+    return function ($a, $b) use ($operation, $argumentsNumber) {
         if (count(func_get_args()) !== $argumentsNumber) {
             throw new \ArgumentCountError('You must pass only ' . $argumentsNumber . ' arguments.');
         }
@@ -21,6 +22,6 @@ function CalculatorGenerator(\Closure $operator)
             throw new \TypeError('Operand must be numeric.');
         }
 
-        return $operator($a, $b);
+        return $operation($a, $b);
     };
 };
