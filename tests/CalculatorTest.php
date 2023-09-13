@@ -5,7 +5,8 @@ use function CalculatorViaClosure\Calculator;
 
 class CalculatorTest extends TestCase
 {
-    public function testCalculatorFunctionThrowExceptionWhenClosureWithEmptyArguments()
+    /** @test */
+    public function it_can_throw_an_exception_when_a_closure_with_no_arguments()
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -13,17 +14,19 @@ class CalculatorTest extends TestCase
         });
     }
 
-    public function testCalculatorFunctionThrowExceptionWhenClosureWithWrongArguments()
+    /** @test */
+    public function it_can_thrown_an_exception_when_a_closure_with_wrong_arguments()
     {
         require __DIR__ . '/../src/Operations/Addition.php';
 
         $calculate = Calculator($addition);
         $this->expectException(\InvalidArgumentException::class);
 
-        $calculate('x', 2);
+        $calculate('wrong', 2);
     }
 
-    public function testAdditionClosureReturnExpected()
+    /** @test */
+    public function it_can_perform_addition()
     {
         require __DIR__ . '/../src/Operations/Addition.php';
 
@@ -35,7 +38,8 @@ class CalculatorTest extends TestCase
         $this->assertEquals(-3, $calculate(-5, 2));
     }
 
-    public function testSubstractionClosureReturnExpected()
+    /** @test */
+    public function it_can_perform_substraction()
     {
         require __DIR__ . '/../src/Operations/Subtraction.php';
 
@@ -47,7 +51,8 @@ class CalculatorTest extends TestCase
         $this->assertEquals(-3, $calculate(2, 5));
     }
 
-    public function testMultiplicationClosureReturnExpected()
+    /** @test */
+    public function it_can_perform_multiplication()
     {
         require __DIR__ . '/../src/Operations/Multiplication.php';
 
@@ -60,7 +65,8 @@ class CalculatorTest extends TestCase
         $this->assertEquals(-6, $calculate(-3, 2));
     }
 
-    public function testDivisionClosureZeroException()
+    /** @test */
+    public function it_can_throw_an_exception_when_division_by_zero()
     {
         require __DIR__ . '/../src/Operations/Division.php';
 
@@ -70,7 +76,8 @@ class CalculatorTest extends TestCase
         $calculate(2, 0);
     }
 
-    public function testDivisionClosureReturnExpected()
+    /** @test */
+    public function it_can_perform_division()
     {
         require __DIR__ . '/../src/Operations/Division.php';
 
