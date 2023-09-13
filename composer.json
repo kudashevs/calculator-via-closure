@@ -1,21 +1,22 @@
 {
-  "name": "kudashevs/CalculatorViaClosure",
-  "description": "A simple calculator app which implements mathematical operations through the Closures.",
-  "keywords": ["php", "study", "calculator", "closure"],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Serge Kudashev",
-      "email": "kudashevs@gmail.com"
+    "name": "kudashevs/calculator-via-closures",
+    "type": "study-case",
+    "description": "A simple calculator app that implements math operations through closure functions.",
+    "keywords": ["php", "study", "study case", "calculator", "closure"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Serge Kudashev",
+            "email": "kudashevs@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "5.6 || ^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "files": ["src/Calculator.php", "src/Operations/bootstrap.php"]
     }
-  ],
-  "require": {
-    "php": "^5.6 || ^7.0"
-  },
-  "require-dev": {
-      "phpunit/phpunit": "^7.0"
-  },
-  "autoload": {
-    "files": ["src/Calculator.php", "src/Operations/bootstrap.php"]
-  }
 }
