@@ -4,11 +4,7 @@ namespace CalculatorViaClosure;
 
 function Calculator(\Closure $operation)
 {
-    $reflection = new \ReflectionFunction($operation);
-
-    if ($reflection->getNumberOfParameters() < 1) {
-        throw new \InvalidArgumentException('Arguments cannot be empty.');
-    }
+    checkValidClosure($operation);
 
     /*
      * This function will store passed Closure function with mathematical operations
@@ -27,4 +23,13 @@ function Calculator(\Closure $operation)
 
         return $operation(...$args);
     };
+}
+
+function checkValidClosure(Closure $operation): void
+{
+    $reflection = new \ReflectionFunction($operation);
+
+    if ($reflection->getNumberOfParameters() < 1) {
+        throw new \InvalidArgumentException('Arguments cannot be empty.');
+    }
 }
