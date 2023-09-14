@@ -17,7 +17,7 @@ class CalculatorTest extends TestCase
     }
 
     /** @test */
-    public function it_can_thrown_an_exception_when_a_closure_with_wrong_arguments()
+    public function it_can_throw_an_exception_when_a_closure_with_wrong_arguments()
     {
         $calculate = calculator($GLOBALS['addition']);
         $this->expectException(\InvalidArgumentException::class);
