@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/Addition.php';
-require_once __DIR__ . '/Division.php';
-require_once __DIR__ . '/Multiplication.php';
-require_once __DIR__ . '/Subtraction.php';
+require_once __DIR__ . '/addition.php';
+require_once __DIR__ . '/division.php';
+require_once __DIR__ . '/multiplication.php';
+require_once __DIR__ . '/subtraction.php';
