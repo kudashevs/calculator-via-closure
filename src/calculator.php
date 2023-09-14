@@ -2,7 +2,7 @@
 
 namespace CalculatorViaClosure;
 
-function calculator(\Closure $operation)
+function calculator(callable $operation)
 {
     checkValidClosure($operation);
 
@@ -25,7 +25,7 @@ function calculator(\Closure $operation)
     };
 }
 
-function checkValidClosure(Closure $operation): void
+function checkValidClosure(callable $operation): void
 {
     $reflection = new \ReflectionFunction($operation);
 
