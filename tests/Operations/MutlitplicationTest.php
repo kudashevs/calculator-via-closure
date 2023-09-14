@@ -78,7 +78,7 @@ class MutlitplicationTest extends TestCase
 
     private function setServiceInstance(): void
     {
-        require __DIR__ . '/../../src/Operations/multiplication.php';
+        $multiplication = require __DIR__ . '/../../src/Operations/multiplication.php';
 
         if (!is_callable($multiplication)) {
             throw new \RuntimeException('A variable is not a callable. Something went really wrong.');

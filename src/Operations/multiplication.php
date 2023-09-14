@@ -2,9 +2,7 @@
 
 namespace CalculatorViaClosure\Operations;
 
-global $multiplication;
-
-$multiplication = function (...$arguments) {
+return function (...$arguments) {
     if (in_array(0, $arguments, true)) {
         return 0;
     }
