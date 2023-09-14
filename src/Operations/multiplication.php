@@ -5,10 +5,6 @@ namespace CalculatorViaClosure\Operations;
 global $multiplication;
 
 $multiplication = function (...$args) {
-    if (count($args) === 1) {
-        return $args[0];
-    }
-
     if (in_array(0, $args, true)) {
         return 0;
     }
