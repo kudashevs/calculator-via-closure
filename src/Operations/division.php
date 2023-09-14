@@ -2,9 +2,7 @@
 
 namespace CalculatorViaClosure\Operations;
 
-global $division;
-
-$division = function (...$arguments) {
+return function (...$arguments) {
     if (in_array(0, $arguments, false)) {
         throw new \DivisionByZeroError('Cannot divide by zero.');
     }

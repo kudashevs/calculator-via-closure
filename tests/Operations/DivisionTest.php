@@ -90,7 +90,7 @@ class DivisionTest extends TestCase
 
     private function setServiceInstance(): void
     {
-        require __DIR__ . '/../../src/Operations/division.php';
+        $division = require __DIR__ . '/../../src/Operations/division.php';
 
         if (!is_callable($division)) {
             throw new \RuntimeException('A variable is not a callable. Something went really wrong.');
