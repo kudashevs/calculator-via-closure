@@ -15,15 +15,7 @@ function calculator(callable $operation)
      * and uses it on the passed arguments as a math operation any time the Closure is invoked.
      */
     return function (...$arguments) use ($operation) {
-        if (empty($arguments)) {
-            throw new \InvalidArgumentException('Arguments cannot be empty.');
-        }
-
-        foreach ($arguments as $arg) {
-            if (!is_int($arg) && !is_float($arg)) {
-                throw new \InvalidArgumentException('Arguments must be numeric.');
-            }
-        }
+        checkValidArguments($arguments);
 
         return $operation(...$arguments);
     };
@@ -35,5 +27,18 @@ function checkValidCallable(callable $operation): void
 
     if ($reflection->getNumberOfParameters() < 1) {
         throw new InvalidCallable('A callable must accept at least one argument.');
+    }
+}
+
+function checkValidArguments(array $arguments): void
+{
+    if (empty($arguments)) {
+        throw new \InvalidArgumentException('Arguments cannot be empty.');
+    }
+
+    foreach ($arguments as $arg) {
+        if (!is_int($arg) && !is_float($arg)) {
+            throw new \InvalidArgumentException('Arguments must be numeric.');
+        }
     }
 }
