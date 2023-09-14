@@ -3,6 +3,9 @@
 $operationFiles = retrieveOperationFiles();
 registerOperationsGlobally($operationFiles);
 
+/**
+ * @return string[]
+ */
 function retrieveOperationFiles(): array
 {
     $allFiles = scandir(__DIR__);
@@ -24,7 +27,7 @@ function registerOperationsGlobally(array $files): void
     }, $files);
 }
 
-function registerOperationGlobally(string $name, string $file)
+function registerOperationGlobally(string $name, string $file): void
 {
     $fullPath = __DIR__ . DIRECTORY_SEPARATOR . $file;
 
