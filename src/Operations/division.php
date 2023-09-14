@@ -5,11 +5,7 @@ namespace CalculatorViaClosure\Operations;
 global $division;
 
 $division = function (...$args) {
-    if (count($args) === 1) {
-        return $args[0];
-    }
-
-    if (in_array(0, $args, true)) {
+    if (in_array(0, $args, false)) {
         throw new \DivisionByZeroError('Cannot divide by zero.');
     }
 
