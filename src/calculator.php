@@ -14,18 +14,18 @@ function calculator(callable $operation)
      * This anonymous function is a Closure that encloses a provided callable $operation argument
      * and uses it on the passed arguments as a math operation any time the Closure is invoked.
      */
-    return function (...$args) use ($operation) {
-        if (empty($args)) {
+    return function (...$arguments) use ($operation) {
+        if (empty($arguments)) {
             throw new \InvalidArgumentException('Arguments cannot be empty.');
         }
 
-        foreach ($args as $arg) {
+        foreach ($arguments as $arg) {
             if (!is_int($arg) && !is_float($arg)) {
                 throw new \InvalidArgumentException('Arguments must be numeric.');
             }
         }
 
-        return $operation(...$args);
+        return $operation(...$arguments);
     };
 }
 
