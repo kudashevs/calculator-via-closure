@@ -1,5 +1,6 @@
 <?php
 
+use CalculatorViaClosure\Exceptions\InvalidCallable;
 use PHPUnit\Framework\TestCase;
 use function CalculatorViaClosure\Calculator;
 
@@ -8,7 +9,8 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_throw_an_exception_when_a_closure_with_no_arguments()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidCallable::class);
+        $this->expectExceptionMessage('argument');
 
         calculator(function () {
         });

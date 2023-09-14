@@ -18,9 +18,9 @@ try {
 } catch (\DivisionByZeroError $e) {
     error_log('PHP Exception: ' . $e->getMessage() . ' in file ' . $e->getFile() . ' on line ' . $e->getLine() . '', 0);
     echo 'Division failed due to division by zero error!' . PHP_EOL;
-} catch (ClosureException $e) {
+} catch (\InvalidCallable $e) {
     error_log('PHP Exception: ' . $e->getMessage() . ' in file ' . $e->getFile() . ' on line ' . $e->getLine() . '', 0);
-    echo 'Wrong Closure type passed to function!' . PHP_EOL;
+    echo 'A wrong callable was provided to the function.' . PHP_EOL;
 } catch (\ArgumentCountError $e) {
     error_log('PHP Exception: ' . $e->getMessage() . ' in file ' . $e->getFile() . ' on line ' . $e->getLine() . '', 0);
     echo 'Wrong arguments count passed to Closure!' . PHP_EOL;

@@ -2,6 +2,10 @@
 
 namespace CalculatorViaClosure;
 
+use CalculatorViaClosure\Exceptions\InvalidCallable;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
 function calculator(callable $operation)
 {
     checkValidCallable($operation);
@@ -30,6 +34,6 @@ function checkValidCallable(callable $operation): void
     $reflection = new \ReflectionFunction($operation);
 
     if ($reflection->getNumberOfParameters() < 1) {
-        throw new \InvalidArgumentException('Arguments cannot be empty.');
+        throw new InvalidCallable('A callable must accept at least one argument.');
     }
 }
