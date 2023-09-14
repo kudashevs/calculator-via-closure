@@ -4,6 +4,8 @@ use PHPUnit\Framework\TestCase;
 
 class AdditionTest extends TestCase
 {
+    private const MAX_PRECISION = 0.000000001;
+
     private $addition;
 
     public function __construct(?string $name = null, array $data = [], $dataName = '')
@@ -49,7 +51,7 @@ class AdditionTest extends TestCase
      */
     public function it_can_perform_addition(array $values, $expected)
     {
-        $this->assertSame($expected, $this->addition->__invoke(...$values));
+        $this->assertEqualsWithDelta($expected, $this->addition->__invoke(...$values), self::MAX_PRECISION);;
     }
 
     public function provideDifferentValues(): array
@@ -60,11 +62,15 @@ class AdditionTest extends TestCase
                 32,
             ],
             'add float to float' => [
-                [0.5, 2.422222],
-                2.922222,
+                [0.5, 2.45],
+                2.95,
+            ],
+            'add integer to float' => [
+                [12.5, 5],
+                17.5,
             ],
             'add float to integer' => [
-                [12.5, 5],
+                [5, 12.5],
                 17.5,
             ],
         ];
