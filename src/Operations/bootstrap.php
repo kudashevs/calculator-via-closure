@@ -1,24 +1,34 @@
 <?php
 
-$requiredFiles = retrieveRequiredFiles();
-loadRequiredFiles($requiredFiles);
+$operationFiles = retrieveRequiredFiles();
+registerOperations($operationFiles);
 
 function retrieveRequiredFiles(): array
 {
-    $currentFile = __FILE__;
-    $files = glob(__DIR__ . '/*.php');
+    $allFiles = scandir(__DIR__);
 
-    return array_filter(
-        $files,
-        function ($file) use ($currentFile) {
-            return $file !== $currentFile;
-        }
-    );
+    return array_map(function ($file) {
+        return __DIR__ . DIRECTORY_SEPARATOR . $file;
+    }, array_filter($allFiles, function ($file) {
+        [$name, $extension] = explode('.', $file);
+
+        return $extension === 'php' && $name !== 'bootstrap';
+    }));
 }
 
-function loadRequiredFiles(array $files): void
+function registerOperations(array $files): void
 {
     array_map(function ($file) {
-        require_once $file;
+        $operationName = pathinfo($file)['filename'];
+        registerOperation($operationName, $file);
     }, $files);
+}
+
+function registerOperation(string $name, string $file)
+{
+    if (!array_key_exists($name, $GLOBALS)) {
+        global $$name;
+
+        $$name = require $file;
+    }
 }
