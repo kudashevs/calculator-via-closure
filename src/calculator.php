@@ -4,7 +4,7 @@ namespace CalculatorViaClosure;
 
 function calculator(callable $operation)
 {
-    checkValidClosure($operation);
+    checkValidCallable($operation);
 
     /*
      * This function will store passed Closure function with mathematical operations
@@ -25,7 +25,7 @@ function calculator(callable $operation)
     };
 }
 
-function checkValidClosure(callable $operation): void
+function checkValidCallable(callable $operation): void
 {
     $reflection = new \ReflectionFunction($operation);
 
