@@ -1,7 +1,7 @@
 <?php
 
 $operationFiles = retrieveOperationFiles();
-registerOperations($operationFiles);
+registerOperationsGlobally($operationFiles);
 
 function retrieveOperationFiles(): array
 {
@@ -18,15 +18,15 @@ function retrieveOperationFiles(): array
     });
 }
 
-function registerOperations(array $files): void
+function registerOperationsGlobally(array $files): void
 {
     array_map(function ($file) {
         $operationName = pathinfo($file)['filename'];
-        registerOperation($operationName, $file);
+        registerOperationGlobally($operationName, $file);
     }, $files);
 }
 
-function registerOperation(string $name, string $file)
+function registerOperationGlobally(string $name, string $file)
 {
     if (!array_key_exists($name, $GLOBALS)) {
         $GLOBALS[$name] = require $file;
