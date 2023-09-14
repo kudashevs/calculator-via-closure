@@ -78,7 +78,7 @@ class SubtractionTest extends TestCase
 
     private function setServiceInstance(): void
     {
-        require __DIR__ . '/../../src/Operations/subtraction.php';
+        $substraction = require __DIR__ . '/../../src/Operations/subtraction.php';
 
         if (!is_callable($substraction)) {
             throw new \RuntimeException('A variable is not a callable. Something went really wrong.');
