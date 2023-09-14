@@ -1,9 +1,9 @@
 <?php
 
-$operationFiles = retrieveRequiredFiles();
+$operationFiles = retrieveOperationFiles();
 registerOperations($operationFiles);
 
-function retrieveRequiredFiles(): array
+function retrieveOperationFiles(): array
 {
     $allFiles = scandir(__DIR__);
 
