@@ -1,7 +1,7 @@
 <?php
 
 $requiredFiles = retrieveRequiredFiles();
-requireFiles($requiredFiles);
+loadRequiredFiles($requiredFiles);
 
 function retrieveRequiredFiles(): array
 {
@@ -16,7 +16,7 @@ function retrieveRequiredFiles(): array
     );
 }
 
-function requireFiles(array $files): void
+function loadRequiredFiles(array $files): void
 {
     array_map(function ($file) {
         require_once $file;
