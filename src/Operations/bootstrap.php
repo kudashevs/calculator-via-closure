@@ -12,8 +12,10 @@ function retrieveRequiredFiles(): array
     }, array_filter($allFiles, function ($file) {
         [$name, $extension] = explode('.', $file);
 
-        return $extension === 'php' && $name !== 'bootstrap';
-    }));
+        return $extension === 'php'
+            && $name !== ''
+            && $name !== 'bootstrap';
+    });
 }
 
 function registerOperations(array $files): void
