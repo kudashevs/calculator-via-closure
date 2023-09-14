@@ -10,7 +10,7 @@ class CalculatorTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        Calculator(function () {
+        calculator(function () {
         });
     }
 
@@ -19,7 +19,7 @@ class CalculatorTest extends TestCase
     {
         require __DIR__ . '/../src/Operations/Addition.php';
 
-        $calculate = Calculator($addition);
+        $calculate = calculator($addition);
         $this->expectException(\InvalidArgumentException::class);
 
         $calculate('wrong', 2);
@@ -30,7 +30,7 @@ class CalculatorTest extends TestCase
     {
         require __DIR__ . '/../src/Operations/Addition.php';
 
-        $calculate = Calculator($addition);
+        $calculate = calculator($addition);
 
         $this->assertEquals(1, $calculate(1));
         $this->assertEquals(4, $calculate(2, 2));
@@ -43,7 +43,7 @@ class CalculatorTest extends TestCase
     {
         require __DIR__ . '/../src/Operations/Subtraction.php';
 
-        $calculate = Calculator($substraction);
+        $calculate = calculator($substraction);
 
         $this->assertEquals(1, $calculate(1));
         $this->assertEquals(0, $calculate(2, 2));
@@ -56,7 +56,7 @@ class CalculatorTest extends TestCase
     {
         require __DIR__ . '/../src/Operations/Multiplication.php';
 
-        $calculate = Calculator($multiplication);
+        $calculate = calculator($multiplication);
 
         $this->assertEquals(0, $calculate(0));
         $this->assertEquals(1, $calculate(1));
@@ -70,7 +70,7 @@ class CalculatorTest extends TestCase
     {
         require __DIR__ . '/../src/Operations/Division.php';
 
-        $calculate = Calculator($division);
+        $calculate = calculator($division);
 
         $this->expectException('\DivisionByZeroError');
         $calculate(2, 0);
@@ -81,7 +81,7 @@ class CalculatorTest extends TestCase
     {
         require __DIR__ . '/../src/Operations/Division.php';
 
-        $calculate = Calculator($division);
+        $calculate = calculator($division);
 
         $this->assertEquals(1, $calculate(1));
         $this->assertEquals(1, $calculate(2, 2));

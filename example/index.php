@@ -5,7 +5,7 @@ namespace CalculatorViaClosure;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 try {
-    $calculate = Calculator($addition);
+    $calculate = calculator($addition);
     echo $calculate(1, 2) . PHP_EOL; // 3
 } catch (\Exception $e) {
     error_log('PHP Exception: ' . $e->getMessage() . ' in file ' . $e->getFile() . ' on line ' . $e->getLine() . '', 0);
@@ -13,7 +13,7 @@ try {
 }
 
 try {
-    $calculate = Calculator($division);
+    $calculate = calculator($division);
     echo $calculate(1, 2) . PHP_EOL; // 0.5
 } catch (\DivisionByZeroError $e) {
     error_log('PHP Exception: ' . $e->getMessage() . ' in file ' . $e->getFile() . ' on line ' . $e->getLine() . '', 0);

@@ -17,7 +17,7 @@
         "phpunit/phpunit": "^8.0|^9.0|^10.0"
     },
     "autoload": {
-        "files": ["src/Calculator.php", "src/Operations/bootstrap.php"]
+        "files": ["src/calculator.php", "src/operations/bootstrap.php"]
     },
     "scripts": {
         "test": "vendor/bin/phpunit --no-coverage",

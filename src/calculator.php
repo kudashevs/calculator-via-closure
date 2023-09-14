@@ -2,7 +2,7 @@
 
 namespace CalculatorViaClosure;
 
-function Calculator(\Closure $operation)
+function calculator(\Closure $operation)
 {
     checkValidClosure($operation);
 
