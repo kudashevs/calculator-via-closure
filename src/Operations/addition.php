@@ -9,9 +9,7 @@ $addition = function (...$args) {
         return $args[0];
     }
 
-    $start = array_shift($args);
-
     return array_reduce($args, function ($acc, $v) {
         return $acc + $v;
-    }, $start);
+    }, 0);
 };
