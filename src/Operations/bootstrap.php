@@ -27,8 +27,6 @@ function registerOperations(array $files): void
 function registerOperation(string $name, string $file)
 {
     if (!array_key_exists($name, $GLOBALS)) {
-        global $$name;
-
-        $$name = require $file;
+        $GLOBALS[$name] = require $file;
     }
 }

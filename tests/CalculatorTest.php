@@ -19,9 +19,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_thrown_an_exception_when_a_closure_with_wrong_arguments()
     {
-        require __DIR__ . '/../src/Operations/Addition.php';
-
-        $calculate = calculator($addition);
+        $calculate = calculator($GLOBALS['addition']);
         $this->expectException(\InvalidArgumentException::class);
 
         $calculate('wrong', 2);
@@ -30,9 +28,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_perform_addition()
     {
-        require __DIR__ . '/../src/Operations/Addition.php';
-
-        $calculate = calculator($addition);
+        $calculate = calculator($GLOBALS['addition']);
 
         $this->assertEquals(1, $calculate(1));
         $this->assertEquals(4, $calculate(2, 2));
@@ -43,9 +39,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_perform_substraction()
     {
-        require __DIR__ . '/../src/Operations/Subtraction.php';
-
-        $calculate = calculator($substraction);
+        $calculate = calculator($GLOBALS['subtraction']);
 
         $this->assertEquals(1, $calculate(1));
         $this->assertEquals(0, $calculate(2, 2));
@@ -56,9 +50,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_perform_multiplication()
     {
-        require __DIR__ . '/../src/Operations/Multiplication.php';
-
-        $calculate = calculator($multiplication);
+        $calculate = calculator($GLOBALS['multiplication']);
 
         $this->assertEquals(0, $calculate(0));
         $this->assertEquals(1, $calculate(1));
@@ -70,9 +62,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_throw_an_exception_when_division_by_zero()
     {
-        require __DIR__ . '/../src/Operations/Division.php';
-
-        $calculate = calculator($division);
+        $calculate = calculator($GLOBALS['division']);
 
         $this->expectException('\DivisionByZeroError');
         $calculate(2, 0);
@@ -81,9 +71,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_perform_division()
     {
-        require __DIR__ . '/../src/Operations/Division.php';
-
-        $calculate = calculator($division);
+        $calculate = calculator($GLOBALS['division']);
 
         $this->assertEquals(1, $calculate(1));
         $this->assertEquals(1, $calculate(2, 2));
