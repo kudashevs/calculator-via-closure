@@ -4,14 +4,10 @@ namespace CalculatorViaClosure\Operations;
 
 global $substraction;
 
-$substraction = function (...$args) {
-    if (count($args) === 1) {
-        return $args[0];
-    }
+$substraction = function (...$arguments) {
+    $firstArgument = array_shift($arguments);
 
-    $start = array_shift($args);
-
-    return array_reduce($args, function ($acc, $v) {
+    return array_reduce($arguments, function ($acc, $v) {
         return $acc - $v;
-    }, $start);
+    }, $firstArgument);
 };
