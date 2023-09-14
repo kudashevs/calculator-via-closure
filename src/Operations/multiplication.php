@@ -4,14 +4,14 @@ namespace CalculatorViaClosure\Operations;
 
 global $multiplication;
 
-$multiplication = function (...$args) {
-    if (in_array(0, $args, true)) {
+$multiplication = function (...$arguments) {
+    if (in_array(0, $arguments, true)) {
         return 0;
     }
 
-    $start = array_shift($args);
+    $start = array_shift($arguments);
 
-    return array_reduce($args, function ($acc, $v) {
+    return array_reduce($arguments, function ($acc, $v) {
         return $acc * $v;
     }, $start);
 };
