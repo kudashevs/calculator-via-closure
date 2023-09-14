@@ -72,7 +72,7 @@ class AdditionTest extends TestCase
 
     private function setServiceInstance(): void
     {
-        require __DIR__ . '/../../src/Operations/addition.php';
+        $addition = require __DIR__ . '/../../src/Operations/addition.php';
 
         if (!is_callable($addition)) {
             throw new \RuntimeException('A variable is not a callable. Something went really wrong.');

@@ -2,9 +2,7 @@
 
 namespace CalculatorViaClosure\Operations;
 
-global $addition;
-
-$addition = function (...$args) {
+return function (...$args) {
     if (count($args) === 1) {
         return $args[0];
     }
