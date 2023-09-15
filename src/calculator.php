@@ -35,8 +35,8 @@ function checkValidArguments(array $arguments): void
         throw new InvalidClosureArgument('The arguments cannot be empty.');
     }
 
-    foreach ($arguments as $arg) {
-        if (!is_int($arg) && !is_float($arg)) {
+    foreach ($arguments as $argument) {
+        if (!is_numeric($argument)) {
             throw new InvalidClosureArgument('Only numeric arguments are allowed.');
         }
     }
