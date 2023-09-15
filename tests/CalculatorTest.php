@@ -8,7 +8,7 @@ use function CalculatorViaClosure\Calculator;
 class CalculatorTest extends TestCase
 {
     /** @test */
-    public function it_can_throw_an_exception_when_a_closure_with_no_arguments()
+    public function it_can_throw_an_exception_when_an_operation_with_no_arguments()
     {
         $this->expectException(InvalidCallable::class);
         $this->expectExceptionMessage('argument');
