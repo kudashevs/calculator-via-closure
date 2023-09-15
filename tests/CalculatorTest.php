@@ -1,6 +1,7 @@
 <?php
 
 use CalculatorViaClosure\Exceptions\InvalidCallable;
+use CalculatorViaClosure\Exceptions\InvalidClosureArgument;
 use PHPUnit\Framework\TestCase;
 use function CalculatorViaClosure\Calculator;
 
@@ -17,11 +18,22 @@ class CalculatorTest extends TestCase
     }
 
     /** @test */
-    public function it_can_throw_an_exception_when_a_closure_with_wrong_arguments()
+    public function it_can_throw_an_exception_when_no_arguments_are_provided_to_the_closure()
     {
-        $calculate = calculator($GLOBALS['addition']);
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidClosureArgument::class);
+        $this->expectExceptionMessage('empty');
 
+        $calculate = calculator($GLOBALS['addition']);
+        $calculate();
+    }
+
+    /** @test */
+    public function it_can_throw_an_exception_when_a_wrong_type_argument_is_provided_to_the_closure()
+    {
+        $this->expectException(InvalidClosureArgument::class);
+        $this->expectExceptionMessage('allowed');
+
+        $calculate = calculator($GLOBALS['addition']);
         $calculate('wrong', 2);
     }
 
