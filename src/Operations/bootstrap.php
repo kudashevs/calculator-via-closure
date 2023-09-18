@@ -1,5 +1,7 @@
 <?php
 
+const GLOBAL_PREFIX = 'op';
+
 $operationFiles = retrieveOperationFiles();
 registerOperationsGlobally($operationFiles);
 
@@ -22,7 +24,7 @@ function retrieveOperationFiles(): array
 function registerOperationsGlobally(array $files): void
 {
     array_map(static function ($file) {
-        $operationName = basename($file, '.php');
+        $operationName = GLOBAL_PREFIX . basename($file, '.php');
         registerOperationGlobally($operationName, $file);
     }, $files);
 }

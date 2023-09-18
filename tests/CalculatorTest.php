@@ -23,7 +23,7 @@ class CalculatorTest extends TestCase
         $this->expectException(InvalidClosureArgument::class);
         $this->expectExceptionMessage('at least');
 
-        $calculate = calculator($GLOBALS['addition']);
+        $calculate = calculator($GLOBALS['opaddition']);
         $calculate();
     }
 
@@ -33,14 +33,14 @@ class CalculatorTest extends TestCase
         $this->expectException(InvalidClosureArgument::class);
         $this->expectExceptionMessage('allowed');
 
-        $calculate = calculator($GLOBALS['addition']);
+        $calculate = calculator($GLOBALS['opaddition']);
         $calculate('wrong', 2);
     }
 
     /** @test */
     public function it_can_perform_addition()
     {
-        $calculate = calculator($GLOBALS['addition']);
+        $calculate = calculator($GLOBALS['opaddition']);
 
         $this->assertEquals(1, $calculate(1));
         $this->assertEquals(4, $calculate(2, 2));
@@ -51,7 +51,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_perform_substraction()
     {
-        $calculate = calculator($GLOBALS['subtraction']);
+        $calculate = calculator($GLOBALS['opsubtraction']);
 
         $this->assertEquals(1, $calculate(1));
         $this->assertEquals(0, $calculate(2, 2));
@@ -62,7 +62,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_perform_multiplication()
     {
-        $calculate = calculator($GLOBALS['multiplication']);
+        $calculate = calculator($GLOBALS['opmultiplication']);
 
         $this->assertEquals(0, $calculate(0));
         $this->assertEquals(1, $calculate(1));
@@ -74,7 +74,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_throw_an_exception_when_division_by_zero()
     {
-        $calculate = calculator($GLOBALS['division']);
+        $calculate = calculator($GLOBALS['opdivision']);
 
         $this->expectException('\DivisionByZeroError');
         $calculate(2, 0);
@@ -83,7 +83,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_perform_division()
     {
-        $calculate = calculator($GLOBALS['division']);
+        $calculate = calculator($GLOBALS['opdivision']);
 
         $this->assertEquals(1, $calculate(1));
         $this->assertEquals(1, $calculate(2, 2));
