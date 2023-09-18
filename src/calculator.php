@@ -12,7 +12,7 @@ function calculator(callable $operation)
     checkValidCallable($operation);
 
     // This anonymous function is a Closure that encloses a provided callable $operation argument
-    // and uses it on the passed arguments as a math operation any time the Closure is invoked.
+    // inside it and invokes this callable with provided arguments any time the Closure is called.
     return function (...$arguments) use ($operation) {
         checkValidArguments($arguments);
 
