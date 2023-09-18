@@ -28,13 +28,13 @@ class CalculatorTest extends TestCase
     }
 
     /** @test */
-    public function it_can_throw_an_exception_when_a_wrong_type_argument_is_provided_to_the_closure()
+    public function it_can_throw_an_exception_when_an_argument_of_a_wrong_type_is_provided_to_the_closure()
     {
         $this->expectException(InvalidClosureArgument::class);
         $this->expectExceptionMessage('allowed');
 
         $calculate = calculator($GLOBALS['opaddition']);
-        $calculate('wrong', 2);
+        $calculate(42, 'wrong');
     }
 
     /** @test */
