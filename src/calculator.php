@@ -32,7 +32,7 @@ function checkValidCallable(callable $operation): void
 function checkValidArguments(array $arguments): void
 {
     if (empty($arguments)) {
-        throw new InvalidClosureArgument('The arguments cannot be empty.');
+        throw new InvalidClosureArgument('Please provide at least one argument.');
     }
 
     foreach ($arguments as $argument) {

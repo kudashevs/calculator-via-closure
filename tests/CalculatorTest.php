@@ -21,7 +21,7 @@ class CalculatorTest extends TestCase
     public function it_can_throw_an_exception_when_no_arguments_are_provided_to_the_closure()
     {
         $this->expectException(InvalidClosureArgument::class);
-        $this->expectExceptionMessage('empty');
+        $this->expectExceptionMessage('at least');
 
         $calculate = calculator($GLOBALS['addition']);
         $calculate();
