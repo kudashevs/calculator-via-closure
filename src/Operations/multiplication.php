@@ -9,7 +9,7 @@ return function (...$arguments) {
 
     $start = array_shift($arguments);
 
-    return array_reduce($arguments, function ($acc, $v) {
-        return $acc * $v;
+    return array_reduce($arguments, function ($carry, $value) {
+        return $carry * $value;
     }, $start);
 };
