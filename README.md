@@ -3,13 +3,22 @@
 This is a case study that aims to show one of the possible ways of using closures in PHP language.
  
 
-The main idea is that we use Calculator function which receives closure implementation of some mathematical operation as
-an argument and store it inside. When we can calculate the result through this stored Closure referring it like
-"variable function" with arguments or invoking it another way.
+## How it works
+ 
+We are given a `calculator()` function that accepts an argument (a `callable` with at least one argument). To start
+using the closure, we need to provide a callable argument with a predefined functionality (a math operation in our case)
+to the `calculator()` function and assign it to a variable. The function is going to enclose the provided callable
+argument as a part of its context and is going to use it each time it is invoked.
 
+```php
+$addition = calculator($opaddition);
+echo $addition(1, 2); // results in 3
+```
+for more usage examples, please see the [examples](examples/) folder.
 
-This isn't a production solution, but only a training exercise which helps better understand how Closures work.  
-Any ideas, suggestions, and reviews will be much appreciated :)
+By default, the package registers four predefined variables in the global scope. These variables are variadic anonymous
+functions which correspond to the basic math operations (addition, subtraction, multiplication, division). For more
+information see the [bootstrap.php](src/Operations/bootstrap.php) file).
 
 
 ## License
