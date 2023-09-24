@@ -1,6 +1,7 @@
-## Calculator Via Closures
+# Calculator via Closures
 
-A simple calculator app is written in PHP and implements mathematical operations through the Closures functions.
+This is a case study that aims to show one of the possible ways of using closures in PHP language.
+ 
 
 The main idea is that we use Calculator function which receives closure implementation of some mathematical operation as
 an argument and store it inside. When we can calculate the result through this stored Closure referring it like
