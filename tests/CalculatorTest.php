@@ -31,7 +31,7 @@ class CalculatorTest extends TestCase
     public function it_can_throw_an_exception_when_an_argument_of_a_wrong_type_is_provided_to_the_closure()
     {
         $this->expectException(InvalidClosureArgument::class);
-        $this->expectExceptionMessage('allowed');
+        $this->expectExceptionMessage('numeric');
 
         $calculate = calculator($GLOBALS['opaddition']);
         $calculate(42, 'wrong');
