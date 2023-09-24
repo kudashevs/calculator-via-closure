@@ -2,6 +2,6 @@
 
 namespace CalculatorViaClosure\Operations;
 
-return function (...$arguments) {
-    return array_shift($arguments) - array_sum($arguments);
+return function (...$numbers) {
+    return array_shift($numbers) - array_sum($numbers);
 };
