@@ -74,9 +74,10 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_throw_an_exception_when_division_by_zero()
     {
-        $calculate = calculator($GLOBALS['opdivision']);
+        $this->expectException(InvalidClosureArgument::class);
+        $this->expectExceptionMessage('zero');
 
-        $this->expectException('\DivisionByZeroError');
+        $calculate = calculator($GLOBALS['opdivision']);
         $calculate(2, 0);
     }
 
