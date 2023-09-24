@@ -1,8 +1,8 @@
 {
     "name": "kudashevs/calculator-via-closures",
-    "type": "study-case",
-    "description": "A simple calculator app that implements math operations through closure functions.",
-    "keywords": ["php", "study", "study case", "calculator", "closure"],
+    "type": "case-study",
+    "description": "A simple calculator app that implements math operations via closure functions.",
+    "keywords": ["php", "study", "case study", "calculator", "closure"],
     "license": "MIT",
     "authors": [
         {
