@@ -9,3 +9,8 @@ an argument and store it inside. When we can calculate the result through this s
 
 This isn't a production solution, but only a training exercise which helps better understand how Closures work.  
 Any ideas, suggestions, and reviews will be much appreciated :)
+
+
+## License
+
+The MIT License (MIT). Please see the [License file](LICENSE.md) for more information.
