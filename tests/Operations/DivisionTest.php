@@ -16,7 +16,7 @@ class DivisionTest extends TestCase
     }
 
     /** @test */
-    public function it_can_throw_an_exception_when_division_by_integer_zero()
+    public function it_can_throw_an_exception_when_division_by_an_integer_zero()
     {
         $this->expectException(DivisionByZeroError::class);
         $this->expectExceptionMessage('divide by');
@@ -25,7 +25,7 @@ class DivisionTest extends TestCase
     }
 
     /** @test */
-    public function it_can_throw_an_exception_when_division_by_float_zero()
+    public function it_can_throw_an_exception_when_division_by_a_float_zero()
     {
         $this->expectException(DivisionByZeroError::class);
         $this->expectExceptionMessage('divide by');
