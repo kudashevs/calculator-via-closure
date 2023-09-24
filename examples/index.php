@@ -21,8 +21,10 @@ try {
 function explainException(\Throwable $exception): string
 {
     return sprintf(
-        '%s: Something really went wrong with a message: %s' . PHP_EOL,
+        '%s: Something went wrong with a message "%s" in file %s on line %s.' . PHP_EOL,
         get_class($exception),
         $exception->getMessage(),
+        $exception->getFile(),
+        $exception->getLine(),
     );
 }
