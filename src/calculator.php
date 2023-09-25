@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CalculatorViaClosure;
 
 use CalculatorViaClosure\Exceptions\InvalidCallable;
-use CalculatorViaClosure\Exceptions\InvalidClosureArgument;
+use CalculatorViaClosure\Exceptions\InvalidOperationArgument;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -34,12 +34,12 @@ function checkValidCallable(callable $operation): void
 function checkValidArguments(array $arguments): void
 {
     if (empty($arguments)) {
-        throw new InvalidClosureArgument('Please provide at least one argument.');
+        throw new InvalidOperationArgument('Please provide at least one argument.');
     }
 
     foreach ($arguments as $argument) {
         if (!is_numeric($argument)) {
-            throw new InvalidClosureArgument('Only numeric arguments are allowed.');
+            throw new InvalidOperationArgument('Only numeric arguments are allowed.');
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use CalculatorViaClosure\Exceptions\InvalidClosureArgument;
+use CalculatorViaClosure\Exceptions\InvalidOperationArgument;
 use PHPUnit\Framework\TestCase;
 
 class DivisionTest extends TestCase
@@ -19,7 +19,7 @@ class DivisionTest extends TestCase
     /** @test */
     public function it_can_throw_an_exception_when_division_by_an_integer_zero()
     {
-        $this->expectException(InvalidClosureArgument::class);
+        $this->expectException(InvalidOperationArgument::class);
         $this->expectExceptionMessage('divide by');
 
         $this->division->__invoke(42, 0);
@@ -28,7 +28,7 @@ class DivisionTest extends TestCase
     /** @test */
     public function it_can_throw_an_exception_when_division_by_a_float_zero()
     {
-        $this->expectException(InvalidClosureArgument::class);
+        $this->expectException(InvalidOperationArgument::class);
         $this->expectExceptionMessage('divide by');
 
         $this->division->__invoke(42, 0.0);

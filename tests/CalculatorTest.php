@@ -1,7 +1,7 @@
 <?php
 
 use CalculatorViaClosure\Exceptions\InvalidCallable;
-use CalculatorViaClosure\Exceptions\InvalidClosureArgument;
+use CalculatorViaClosure\Exceptions\InvalidOperationArgument;
 use PHPUnit\Framework\TestCase;
 use function CalculatorViaClosure\Calculator;
 
@@ -20,7 +20,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_throw_an_exception_when_no_arguments_are_provided_to_the_closure()
     {
-        $this->expectException(InvalidClosureArgument::class);
+        $this->expectException(InvalidOperationArgument::class);
         $this->expectExceptionMessage('at least');
 
         $calculate = calculator($GLOBALS['opaddition']);
@@ -30,7 +30,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_throw_an_exception_when_an_argument_of_a_wrong_type_is_provided_to_the_closure()
     {
-        $this->expectException(InvalidClosureArgument::class);
+        $this->expectException(InvalidOperationArgument::class);
         $this->expectExceptionMessage('numeric');
 
         $calculate = calculator($GLOBALS['opaddition']);
@@ -74,7 +74,7 @@ class CalculatorTest extends TestCase
     /** @test */
     public function it_can_throw_an_exception_when_division_by_zero()
     {
-        $this->expectException(InvalidClosureArgument::class);
+        $this->expectException(InvalidOperationArgument::class);
         $this->expectExceptionMessage('zero');
 
         $calculate = calculator($GLOBALS['opdivision']);
