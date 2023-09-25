@@ -19,9 +19,11 @@ for more usage examples, please see the [examples](examples/) folder.
 
 ## Notes
 
-By default, the package registers four predefined variables in the global scope. These variables refer to variadic
-anonymous functions that correspond to the basic math operations (addition, subtraction, multiplication, division).
-For more information see the [bootstrap.php](src/Operations/bootstrap.php) file).
+By default, the package uses a bootstrap that registers four global variables that correspond to the basic math operations
+(addition, subtraction, multiplication, division). These variables have an `op-` prefix in their names (i.e. `$opaddition`)
+and refer to variadic anonymous functions. For more information see the [bootstrap.php](src/Operations/bootstrap.php) file).
+
+The validation of input arguments is implemented in the `checkValidArguments` function in the [calculator.php](src/calculator.php) file.
 
 The decomposition might look strange, and it is. But this is just an example on how we can use closures and assign
 a piece of behavior to a variable. 
