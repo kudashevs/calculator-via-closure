@@ -25,8 +25,8 @@ and refer to variadic anonymous functions. For more information see the [bootstr
 
 The validation of input arguments is implemented in the `checkValidArguments` function in the [calculator.php](src/calculator.php) file.
 
-The decomposition might look strange, and it is. But this is just an example on how we can use closures and assign
-a piece of behavior to a variable. 
+**Note** The decomposition might look strange, and it really is. However, this is just a study case on how we can use a closure
+to assign some predefined behavior to a variable.
 
 
 ## Things to learn
