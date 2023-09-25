@@ -32,7 +32,7 @@ a piece of behavior to a variable.
 Things that you can learn from this case study:
 - closures, how they behave, and [how you can use them](src/calculator.php#L16)
 - how to [check the number of arguments of a callable](src/calculator.php#L25)
-- how to register variables in the global scope
+- how to [register variables in the global scope](src/Operations/bootstrap.php#L32)
 
 
 ## License
