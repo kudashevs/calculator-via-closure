@@ -16,9 +16,15 @@ echo $addition(1, 2); // results in 3
 ```
 for more usage examples, please see the [examples](examples/) folder.
 
-By default, the package registers four predefined variables in the global scope. These variables are variadic anonymous
-functions which correspond to the basic math operations (addition, subtraction, multiplication, division). For more
-information see the [bootstrap.php](src/Operations/bootstrap.php) file).
+
+## Notes
+
+By default, the package registers four predefined variables in the global scope. These variables refer to variadic
+anonymous functions that correspond to the basic math operations (addition, subtraction, multiplication, division).
+For more information see the [bootstrap.php](src/Operations/bootstrap.php) file).
+
+The decomposition might look strange, and it is. But this is just an example on how we can use closures and assign
+a piece of behavior to a variable. 
 
 
 ## License
